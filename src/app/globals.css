@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-jakarta);
+  --font-display: var(--font-instrument);
+  --font-nastaliq: var(--font-gulzar);
+}
+
+@theme {
+  /* Warm parchment editorial — "the art of the welcome". */
+  --color-paper: #f6efe3;
+  --color-ink: #f6efe3;
+  --color-ink-2: #f0e7d4;
+  --color-ink-3: #e9dcc1;
+  --color-ink-4: #dfcfae;
+  --color-ivory: #2a2014;
+  --color-ivory-dim: #46392a;
+  --color-taupe: #7c6a51;
+  --color-gold: #a8762d;
+  --color-gold-soft: #d3a94e;
+  --color-gold-deep: #8a5c1d;
+  --color-brick: #a5493f;
+  --color-teal: #3d6b5e;
+  --color-on-gold: #2a2014;
+  --color-line: #e4d7bd;
+  --color-line-strong: #d3c19d;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-on-gold);
+}
+
+/* Subtle paper grain, decorative only. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    display: none;
+  }
+  .anim-rise,
+  .anim-zoom,
+  .anim-nav,
+  .anim-pop,
+  .anim-marquee {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-deep);
+  outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #efe6d2;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7b490;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b19b73;
+}
+
+/* Light autofill fix */
+input:-webkit-autofill,
+select:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-ivory);
+  -webkit-box-shadow: 0 0 0 1000px #e9dcc1 inset;
+  caret-color: var(--color-ivory);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* Brushed amber metallic text, used sparingly on accents. */
+.text-gold-brushed {
+  background-image: linear-gradient(
+    100deg,
+    #8a5c1d 0%,
+    #d3a94e 30%,
+    #a8762d 50%,
+    #e6c273 72%,
+    #8a5c1d 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* ---------- entrance + marquee animations ---------- */
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes nav-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.anim-rise {
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.anim-zoom {
+  animation: hero-zoom 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.anim-nav {
+  animation: nav-drop 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.anim-pop {
+  animation: pop-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.anim-fade {
+  animation: fade-in 0.3s ease-out both;
+}
+.anim-marquee {
+  animation: marquee-scroll 22s linear infinite;
+}
