@@ -128,40 +128,130 @@ export default function Hero() {
 function RevealHeroImage() {
   return (
     <div className="anim-rise relative hidden justify-center sm:flex" style={{ animationDelay: "0.4s" }}>
-      <div className="relative w-full max-w-[420px]">
+      <div className="relative w-full max-w-[460px]">
+        {/* echoed arch silhouette */}
         <div
-          className="absolute -right-8 -top-8 -z-10 h-56 w-56 rounded-full border border-gold/40"
           aria-hidden="true"
+          className="absolute -right-8 -top-10 h-[590px] w-[440px] rounded-t-full rounded-b-[3rem] border-2 border-gold/25"
         />
-        <div
-          className="absolute -left-10 bottom-16 -z-10 h-40 w-40 rounded-full border border-brick/30"
+
+        {/* drifting gold + brick dust */}
+        <span
           aria-hidden="true"
+          className="anim-float absolute -top-3 right-24 h-2.5 w-2.5 rounded-full bg-gold"
+          style={{ animationDuration: "5s" }}
         />
-        <div className="relative overflow-hidden rounded-t-full rounded-b-[2rem] ring-1 ring-line-strong shadow-[0_30px_80px_rgba(42,32,20,0.25)]">
+        <span
+          aria-hidden="true"
+          className="anim-float absolute top-44 -right-4 h-1.5 w-1.5 rounded-full bg-brick"
+          style={{ animationDuration: "7s", animationDelay: "1.2s" }}
+        />
+
+        {/* main arch photo with double frame + keystone */}
+        <div className="relative aspect-[4/5] overflow-hidden rounded-t-full rounded-b-[3rem] ring-1 ring-line-strong shadow-[0_30px_80px_rgba(42,32,20,0.25)]">
           <Image
             src={IMAGES.hero}
             alt="Grand banquet hall at Orbal Shadi Hall"
             fill
             priority
-            sizes="420px"
-            className="object-cover"
+            sizes="440px"
+            className="anim-zoom object-cover"
           />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/20"
+          />
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-3 rounded-t-full rounded-b-[2.5rem] border border-gold/50"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute -top-3.5 left-1/2 flex h-8 w-8 -translate-x-1/2 rotate-45 items-center justify-center rounded-lg border border-gold-soft bg-ink shadow-md"
+          >
+            <span className="-rotate-45 font-display text-base italic leading-none text-gold-deep">
+              O
+            </span>
+          </div>
         </div>
-        <div className="absolute -left-8 bottom-10 rotate-90 origin-bottom-left rounded-full border border-line-strong bg-ink/85 px-4 py-2.5 backdrop-blur-md">
+
+        {/* scalloped bunting garland */}
+        <div
+          aria-hidden="true"
+          className="absolute left-0 right-0 top-8 flex items-start justify-between px-2"
+        >
+          {Array.from({ length: 9 }).map((_, i) => (
+            <span
+              key={i}
+              className={`h-0 w-0 border-l-[7px] border-r-[7px] border-t-[11px] border-l-transparent border-r-transparent ${
+                i % 2 ? "border-t-gold" : "border-t-brick"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* floating amenity chips */}
+        <div
+          className="anim-float absolute -left-6 top-14 rounded-full border border-line-strong bg-ink/85 px-4 py-2.5 shadow-[0_10px_30px_rgba(42,32,20,0.12)] backdrop-blur-md"
+          style={{ animationDuration: "6.5s" }}
+        >
+          <span className="flex items-center gap-2 text-xs font-semibold text-ivory">
+            <StarFour size={13} weight="fill" className="text-gold" />
+            In-house decor
+          </span>
+        </div>
+        <div
+          className="anim-float absolute -right-5 bottom-32 rounded-full border border-line-strong bg-ink/85 px-4 py-2.5 shadow-[0_10px_30px_rgba(42,32,20,0.12)] backdrop-blur-md"
+          style={{ animationDuration: "7.5s", animationDelay: "0.8s" }}
+        >
+          <span className="flex items-center gap-2 text-xs font-semibold text-ivory">
+            <span className="h-1.5 w-1.5 rounded-full bg-brick" />
+            Valet parking
+          </span>
+        </div>
+
+        {/* rotating welcome ring */}
+        <div className="absolute -bottom-9 left-1/2 -translate-x-1/2">
+          <div className="relative h-36 w-36 sm:h-40 sm:w-40">
+            <svg
+              viewBox="0 0 200 200"
+              aria-hidden="true"
+              className="anim-spin-slow absolute inset-0 h-full w-full"
+              style={{ transformOrigin: "50% 50%" }}
+            >
+              <defs>
+                <path
+                  id="orbal-ring"
+                  d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"
+                />
+              </defs>
+              <text
+                fill="var(--color-gold-deep)"
+                fontSize="12"
+                letterSpacing="2"
+                fontWeight="600"
+              >
+                <textPath href="#orbal-ring" textAnchor="middle" startOffset="50%">
+                  ORBAL SHADI HALL • THE ART OF THE WELCOME •
+                </textPath>
+              </text>
+            </svg>
+            <div className="absolute inset-4 flex flex-col items-center justify-center rounded-full bg-brick text-center shadow-[0_18px_45px_rgba(165,73,63,0.45)]">
+              <span className="font-nastaliq text-2xl leading-none text-paper">
+                {WELCOME.urdu}
+              </span>
+              <span className="mt-1 text-[8px] font-bold uppercase tracking-[0.28em] text-paper/85">
+                Welcome
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* vertical nastaliq badge */}
+        <div className="absolute -left-12 bottom-24 origin-bottom-left rotate-90 rounded-full border border-line-strong bg-ink/85 px-4 py-2.5 backdrop-blur-md">
           <span className="font-nastaliq text-lg leading-none text-brick">
             {WELCOME.pashto}
           </span>
-        </div>
-        <div className="absolute -right-4 top-1/2 flex h-24 w-24 -translate-y-1/2 items-center justify-center rounded-full bg-brick shadow-[0_16px_40px_rgba(165,73,63,0.4)]">
-          <div className="flex flex-col items-center gap-0.5 text-center text-paper">
-            <StarFour size={14} weight="fill" className="opacity-80" />
-            <span className="font-display text-3xl italic leading-none">
-              1,000
-            </span>
-            <span className="text-[8px] font-semibold uppercase tracking-[0.16em]">
-              Guests
-            </span>
-          </div>
         </div>
       </div>
     </div>

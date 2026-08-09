@@ -218,3 +218,25 @@ textarea:-webkit-autofill {
 .anim-marquee {
   animation: marquee-scroll 22s linear infinite;
 }
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.anim-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@keyframes float-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.anim-float {
+  animation: float-bob 6s ease-in-out infinite;
+}
