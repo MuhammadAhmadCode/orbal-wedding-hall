@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import {
   Instrument_Serif,
   Plus_Jakarta_Sans,
@@ -41,15 +42,31 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f6efe3",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6efe3" },
+    { media: "(prefers-color-scheme: dark)", color: "#1c1712" },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${instrument.variable} ${gulzar.variable} ${jakarta.variable}`}
     >
+      <head>
+        <Script id="theme-init" strategy="beforeInteractive">
+          {`(function () {
+            try {
+              var theme = localStorage.getItem("orbal-theme") || "light";
+              document.documentElement.dataset.theme = theme;
+            } catch (e) {
+              document.documentElement.dataset.theme = "light";
+            }
+          })();`}
+        </Script>
+      </head>
       <body className="bg-ink text-ivory antialiased">{children}</body>
     </html>
   );

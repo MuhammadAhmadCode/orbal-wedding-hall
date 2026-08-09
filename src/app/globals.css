@@ -30,6 +30,29 @@
   color-scheme: light;
 }
 
+/* Midnight ember — warm dark counterpart of the parchment editorial theme.
+   The whole site is built on semantic color tokens, so re-mapping them here
+   flips every surface, text and accent to the dark theme. */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #f4ead6;
+  --color-ink: #1c1712;
+  --color-ink-2: #261f17;
+  --color-ink-3: #312920;
+  --color-ink-4: #3d3425;
+  --color-ivory: #f1e7d3;
+  --color-ivory-dim: #cabba0;
+  --color-taupe: #94856b;
+  --color-gold: #d3a94e;
+  --color-gold-soft: #e8c87d;
+  --color-gold-deep: #d1a94f;
+  --color-brick: #d06b5b;
+  --color-teal: #6d998c;
+  --color-on-gold: #1c1712;
+  --color-line: #322a1e;
+  --color-line-strong: #46392a;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.75rem;
@@ -55,6 +78,9 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
 }
 
 ::selection {
@@ -113,6 +139,16 @@ body::after {
   background: #b19b73;
 }
 
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #211b14;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #4a3d2a;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #5b4c35;
+}
+
 /* Light autofill fix */
 input:-webkit-autofill,
 select:-webkit-autofill,
@@ -121,6 +157,12 @@ textarea:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #e9dcc1 inset;
   caret-color: var(--color-ivory);
   transition: background-color 9999s ease-in-out 0s;
+}
+
+[data-theme="dark"] input:-webkit-autofill,
+[data-theme="dark"] select:-webkit-autofill,
+[data-theme="dark"] textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #2a2319 inset;
 }
 
 /* Brushed amber metallic text, used sparingly on accents. */

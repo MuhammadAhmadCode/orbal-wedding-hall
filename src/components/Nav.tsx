@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { NAV_LINKS, SITE, WELCOME } from "@/lib/site";
+import ThemeToggle from "./ThemeToggle";
 
 function Monogram() {
   return (
@@ -69,6 +70,7 @@ export default function Nav() {
             </div>
 
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <a
                 href="#availability"
                 className="hidden rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-on-gold transition-all duration-500 hover:bg-gold-soft active:translate-y-px sm:inline-flex"
