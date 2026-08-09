@@ -1,19 +1,17 @@
 // Business details for Orbal Shadi Hall.
-// TODO: fill in the real address, phone and WhatsApp number once confirmed.
+// TODO: fill in the real address once confirmed.
 export const SITE = {
   name: "Orbal Shadi Hall",
   shortName: "Orbal",
   city: "Pakistan",
   tagline: "The Art of the Welcome",
   addressLine: "Pakistan",
-  // Placeholder numbers — replace with the hall's real contact details.
-  phoneDisplay: "+92 300 1234567",
-  phoneTel: "+923001234567",
+  phoneDisplay: "+92 313 0086000",
+  phoneTel: "+923130086000",
   email: "bookings@orbalshadihall.pk",
   hours: "Open daily, 10 AM to 10 PM",
   // WhatsApp number in international format without + or spaces.
-  // TODO: replace 923001234567 with the hall's real WhatsApp number.
-  whatsappNumber: "923001234567",
+  whatsappNumber: "923130086000",
   // Placeholder — Orbal's location is TBD.
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Orbal+Shadi+Hall+Pakistan",
   instagram: "https://instagram.com",
@@ -90,24 +88,41 @@ export const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ] as const;
 
-// Placeholder testimonials until real guest feedback is available.
+// Real guest reviews published on Orbal Shadi Hall's Google listing.
 export const REVIEWS = [
   {
     quote:
-      "The hall was dressed beautifully and our families were looked after from the entrance to the last guest. The decor and lighting felt far more premium than we expected.",
-    name: "Ayesha & Hamza",
-    role: "Shaadi, 2025",
+      "It's my third time at Orbal Shadi Hall. I really love the services, the food, and the location — absolutely perfect!",
+    name: "Mushtaq Ahmad",
+    meta: "Local Guide · 9 reviews",
+    time: "8 months ago",
   },
   {
     quote:
-      "We hosted over 800 guests with ease. The separate halls, ample parking and cooperative staff made the whole day run without a single worry.",
-    name: "Sara Malik",
-    role: "Bridal family",
+      "The hall was beautiful and the space for parking is also big. The location and scenery are amazing — the view of the surrounding mountains and the greenery is awesome.",
+    name: "Mazhar Ali Shah",
+    meta: "Local Guide · 46 reviews",
+    time: "6 months ago",
   },
   {
     quote:
-      "Booking was straightforward — we checked availability online, locked our date with an advance, and the team handled catering and stage design end to end.",
-    name: "Bilal Raza",
-    role: "Walima host",
+      "Orbal marquee is a great place for functions and events — weddings, walimas and all kinds of get-togethers. It has a good open area along with one big hall that can occupy 1,000 guests at a time. Best place for events at affordable prices.",
+    name: "Jamal Shahzad",
+    meta: "Local Guide · 30 reviews",
+    time: "a month ago",
+  },
+  {
+    quote:
+      "Best place for a wedding or any other event. Having a large parking space and a peaceful environment.",
+    name: "Mushtaq Ahmad",
+    meta: "Local Guide · 13 reviews",
+    time: "2 years ago",
+  },
+  {
+    quote:
+      "Orbal is a very good and open wedding hall. Big car parking and a separate space for both male and female. Generator and other necessary facilities are also available — you can use your own.",
+    name: "Muhammad Suliman",
+    meta: "Local Guide · 16 reviews",
+    time: "11 months ago",
   },
 ] as const;
